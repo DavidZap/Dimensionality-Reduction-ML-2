@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-# import cv2
+import cv2
 import pickle
 import requests
 from io import BytesIO
@@ -34,8 +34,8 @@ n_components=col1.slider("n_components", 0, 28, 10)
 st.subheader("How do you want to do your input?")
 
 col0, col1 = st.columns(2)
-# options2 = ['Upload a file', 'URL', 'Draw your number']
-options2 = ['Upload a file', 'URL']
+options2 = ['Upload a file', 'URL', 'Draw your number']
+# options2 = ['Upload a file', 'URL']
 unique_selection2 = col0.radio('Unique option', options2)
 
 def do_predict(img):
@@ -59,7 +59,7 @@ if unique_selection2 == "Upload a file":
         # st.write(img)
         
 elif unique_selection2 == "URL":
-    url = col1.text_input("Introduce la URL de la imagen")
+    url = col1.text_input("Type image URL")
     if url:
         st.image(url, caption='Imagen cargada desde URL', use_column_width=True)
         response = requests.get(url, verify=False)
@@ -68,30 +68,31 @@ elif unique_selection2 == "URL":
         img = np.array(img).astype('float32') / 255.0
         do_predict(img)
 
-# else:
-#     SIZE = 150
-#     mode = st.checkbox("Draw (or Delete)?", True)
-#     canvas_result = st_canvas(
-#         fill_color='#000000',
-#         stroke_width=10,
-#         stroke_color='#FFFFFF',
-#         background_color='#000000',
-#         width=SIZE,
-#         height=SIZE,
-#         drawing_mode="freedraw" if mode else "transform",
-#         key='canvas')
+else:
+    SIZE = 150
+    mode = st.checkbox("Draw (or Delete)?", True)
+    canvas_result = st_canvas(
+        fill_color='#000000',
+        stroke_width=10,
+        stroke_color='#FFFFFF',
+        background_color='#000000',
+        width=SIZE,
+        height=SIZE,
+        drawing_mode="freedraw" if mode else "transform",
+        key='canvas')
     
-#     if canvas_result.image_data is not None:
-#         img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-#         rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-#         st.write('Model Input')
-#         st.image(rescaled)
-#         input_numpy_array = np.array(canvas_result.image_data)
-#         input_image = Image.fromarray(input_numpy_array.astype('uint8'), 'RGBA')
-#         input_image_gs = input_image.convert('L')
-#         img = input_image_gs.resize((28, 28))
-#         img = np.array(img).astype('float32') / 255.0
-#         # st.write(img)
+    if canvas_result.image_data is not None:
+        img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+        rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+        st.write('Model Input')
+        st.image(rescaled)
+        input_numpy_array = np.array(canvas_result.image_data)
+        input_image = Image.fromarray(input_numpy_array.astype('uint8'), 'RGBA')
+        input_image_gs = input_image.convert('L')
+        img = input_image_gs.resize((28, 28))
+        img = np.array(img).astype('float32') / 255.0
+        do_predict(img)
+        # st.write(img)
         
 #Mpdel 
 
