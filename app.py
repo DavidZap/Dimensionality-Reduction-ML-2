@@ -1,6 +1,7 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
 # import cv2
+import pickle
 import requests
 from io import BytesIO
 from PIL import Image
@@ -85,22 +86,24 @@ elif unique_selection2 == "URL":
 #Mpdel 
 
 
-# Descargar el conjunto de datos MNIST
-mnist = fetch_openml('mnist_784')
-X = mnist.data / 255.0  # Normalizar los datos
-y = mnist.target
+# # Descargar el conjunto de datos MNIST
+# mnist = fetch_openml('mnist_784')
+# X = mnist.data / 255.0  # Normalizar los datos
+# y = mnist.target
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-model = LogisticRegression(penalty='none', solver='saga')
-model.fit(X_train, y_train)
+# model = LogisticRegression(penalty='none', solver='saga')
+# model.fit(X_train, y_train)
 
-accuracy = model.score(X_test, y_test)
-st.write('Test accuracy: %.2f%%' % (accuracy * 100))
+# accuracy = model.score(X_test, y_test)
+# st.write('Test accuracy: %.2f%%' % (accuracy * 100))
 
+with open('modelo.pkl', 'rb') as archivo:
+    model = pickle.load(archivo)
 
-pred = modelo.predict(img.reshape(1, 784))
+pred = model.predict(img.reshape(1, 784))
 
 st.write('the prediction is:', pred[0])
 
