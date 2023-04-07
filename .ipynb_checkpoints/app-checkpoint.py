@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-import cv2
+# import cv2
 import requests
 from io import BytesIO
 from PIL import Image
@@ -33,7 +33,8 @@ n_components=col1.slider("n_components", 0, 28, 10)
 st.subheader("How do you want to do your input?")
 
 col0, col1 = st.columns(2)
-options2 = ['Upload a file', 'URL', 'Draw your number']
+# options2 = ['Upload a file', 'URL', 'Draw your number']
+options2 = ['Upload a file', 'URL']
 unique_selection2 = col0.radio('Unique option', options2)
 
 if unique_selection2 == "Upload a file":
@@ -56,30 +57,30 @@ elif unique_selection2 == "URL":
         img = img.resize((28, 28))
         img = np.array(img).astype('float32') / 255.0
 
-else:
-    SIZE = 150
-    mode = st.checkbox("Draw (or Delete)?", True)
-    canvas_result = st_canvas(
-        fill_color='#000000',
-        stroke_width=10,
-        stroke_color='#FFFFFF',
-        background_color='#000000',
-        width=SIZE,
-        height=SIZE,
-        drawing_mode="freedraw" if mode else "transform",
-        key='canvas')
+# else:
+#     SIZE = 150
+#     mode = st.checkbox("Draw (or Delete)?", True)
+#     canvas_result = st_canvas(
+#         fill_color='#000000',
+#         stroke_width=10,
+#         stroke_color='#FFFFFF',
+#         background_color='#000000',
+#         width=SIZE,
+#         height=SIZE,
+#         drawing_mode="freedraw" if mode else "transform",
+#         key='canvas')
     
-    if canvas_result.image_data is not None:
-        img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
-        rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
-        st.write('Model Input')
-        st.image(rescaled)
-        input_numpy_array = np.array(canvas_result.image_data)
-        input_image = Image.fromarray(input_numpy_array.astype('uint8'), 'RGBA')
-        input_image_gs = input_image.convert('L')
-        img = input_image_gs.resize((28, 28))
-        img = np.array(img).astype('float32') / 255.0
-        # st.write(img)
+#     if canvas_result.image_data is not None:
+#         img = cv2.resize(canvas_result.image_data.astype('uint8'), (28, 28))
+#         rescaled = cv2.resize(img, (SIZE, SIZE), interpolation=cv2.INTER_NEAREST)
+#         st.write('Model Input')
+#         st.image(rescaled)
+#         input_numpy_array = np.array(canvas_result.image_data)
+#         input_image = Image.fromarray(input_numpy_array.astype('uint8'), 'RGBA')
+#         input_image_gs = input_image.convert('L')
+#         img = input_image_gs.resize((28, 28))
+#         img = np.array(img).astype('float32') / 255.0
+#         # st.write(img)
         
 #Mpdel 
 
@@ -89,41 +90,25 @@ mnist = fetch_openml('mnist_784')
 X = mnist.data / 255.0  # Normalizar los datos
 y = mnist.target
 
-from model import myPCA
-pca = myPCA(n_components=n_components,method=method)
-X= X.copy()
-# fit the data
-pca.fit(X)
 
-# transform the data using the PCA object
-X_transformed = pca.fit_transform(X)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-X_train, X_test, y_train, y_test = train_test_split(X_transformed, y, test_size=0.2, random_state=42)
 model = LogisticRegression(penalty='none', solver='saga')
 model.fit(X_train, y_train)
+
 accuracy = model.score(X_test, y_test)
+st.write('Test accuracy: %.2f%%' % (accuracy * 100))
 
-st.write('Model Accuracy : %.2f%%' % (accuracy * 100))
 
-st.subheader('Number Prediction')
+pred = modelo.predict(img.reshape(1, 784))
 
-img = Image.open('ocho.jpeg').convert('L')
-img = img.resize((28, 28))
-img = np.array(img).astype('float32') / 255.0
-from model import myPCA
-myPCA = myPCA(n_components=n_components,method=method)
+st.write('the prediction is:', pred[0])
 
-# fit the data
-myPCA.fit(img)
 
-# transform the data using the PCA object
-test = myPCA.fit_transform(img)
 
-pred = model.predict(test)
 
-print('Prediction :', pred[0])
-    
-##### Train model
+
+#
 
 # import matplotlib.pyplot as plt
 # from sklearn.datasets import fetch_openml
