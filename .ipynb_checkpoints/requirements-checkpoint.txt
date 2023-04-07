@@ -2,7 +2,6 @@ streamlit==1.17.0
 matplotlib==3.7.1
 Pillow==9.5.0
 numpy==1.24.2
-runipy
 opencv-python==4.5.5.62
 opencv-contrib-python
 streamlit_drawable_canvas
