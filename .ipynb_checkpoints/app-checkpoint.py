@@ -102,10 +102,11 @@ elif unique_selection2 == "URL":
 
 with open('modelo.pkl', 'rb') as archivo:
     model = pickle.load(archivo)
+    
+if img:
+    pred = model.predict(img.reshape(1, 784))
 
-pred = model.predict(img.reshape(1, 784))
-
-st.write('the prediction is:', pred[0])
+    st.write('the prediction is:', pred[0])
 
 
 
