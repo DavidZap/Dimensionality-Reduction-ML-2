@@ -38,6 +38,14 @@ col0, col1 = st.columns(2)
 options2 = ['Upload a file', 'URL']
 unique_selection2 = col0.radio('Unique option', options2)
 
+def do_predict(img):
+    with open('modelo.pkl', 'rb') as archivo:
+        model = pickle.load(archivo)
+
+    pred = model.predict(img.reshape(1, 784))
+
+    return st.write('the prediction is:', pred[0])
+
 if unique_selection2 == "Upload a file":
     
     #Upload a file:
@@ -47,6 +55,7 @@ if unique_selection2 == "Upload a file":
         img = Image.open(image).convert('L')
         img = img.resize((28, 28))
         img = np.array(img).astype('float32') / 255.0
+        do_predict(img)
         # st.write(img)
         
 elif unique_selection2 == "URL":
@@ -57,6 +66,7 @@ elif unique_selection2 == "URL":
         img = Image.open(BytesIO(response.content)).convert('L')
         img = img.resize((28, 28))
         img = np.array(img).astype('float32') / 255.0
+        do_predict(img)
 
 # else:
 #     SIZE = 150
@@ -100,13 +110,7 @@ elif unique_selection2 == "URL":
 # accuracy = model.score(X_test, y_test)
 # st.write('Test accuracy: %.2f%%' % (accuracy * 100))
 
-with open('modelo.pkl', 'rb') as archivo:
-    model = pickle.load(archivo)
-    
-if img:
-    pred = model.predict(img.reshape(1, 784))
 
-    st.write('the prediction is:', pred[0])
 
 
 
