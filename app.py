@@ -1,6 +1,6 @@
 import streamlit as st
 from streamlit_drawable_canvas import st_canvas
-import cv2
+# import cv2
 import pickle
 import requests
 from io import BytesIO
