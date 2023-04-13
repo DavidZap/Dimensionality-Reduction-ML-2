@@ -20,6 +20,8 @@ import time
 #     prg.progress(i+1)
 
 st.title("Number Classifier with my unsupervised package 🔢")
+st.write("                                     ")
+st.write("This data app could classify the number 0 and 8 from mnist dataset")
 
 col0, col1 = st.columns(2)
 # choose an unique option
@@ -51,7 +53,6 @@ def do_predict(img):
 #     pred = model.predict(img.reshape(1, 784))
 
     with st.spinner('Wait for it...'):
-        # time.sleep(5)  
 
         X=pd.read_csv("XMatrix")
         y=pd.read_csv("YMatrix")
