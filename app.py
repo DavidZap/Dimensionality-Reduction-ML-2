@@ -19,6 +19,7 @@ import time
 #     time.sleep(0.1)
 #     prg.progress(i+1)
 
+
 st.title("Number Classifier with my unsupervised package 🔢")
 st.write("                                     ")
 st.write("This data app could classify the number 0 and 8 from mnist dataset")
@@ -46,6 +47,18 @@ col0, col1 = st.columns(2)
 options2 = ['Upload a file', 'URL']
 unique_selection2 = col0.radio('Unique option', options2)
 
+def load_data(file_path):
+    data = pd.read_csv(file_path)
+    return data
+
+file_path_X ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix"
+file_path_y ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/Ymatrix"
+
+y=load_data(file_path_y)
+X=load_data(file_path_X)
+X=X.drop(X.columns[0],axis=1) 
+
+
 def do_predict(img):
 #     with open('modelo.pkl', 'rb') as archivo:
 #         model = pickle.load(archivo)
@@ -53,10 +66,6 @@ def do_predict(img):
 #     pred = model.predict(img.reshape(1, 784))
 
     with st.spinner('Wait for it...'):
-
-        y=pd.read_csv("YMatrix")
-        X=pd.read_csv("XMatrix")
-        X=X.drop(X.columns[0],axis=1) 
 
         from model import myPCA
         myPCA = myPCA(n_components=n_components,method=method)
