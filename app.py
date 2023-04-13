@@ -54,9 +54,8 @@ def do_predict(img):
 
     with st.spinner('Wait for it...'):
 
-        # X=pd.read_csv("XMatrix")
-        # y=pd.read_csv("YMatrix")
-        X=pd.read_csv("https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix.csv")
+        y=pd.read_csv("YMatrix")
+        X=pd.read_csv("XMatrix")
         X=X.drop(X.columns[0],axis=1) 
 
         from model import myPCA
@@ -85,7 +84,7 @@ if unique_selection2 == "Upload a file":
     #Upload a file:
     image = col1.file_uploader("Upload a image", type=["jpg", "jpeg", "png"])
     if image:
-        st.image(image, caption='loaded', use_column_width=True)
+        st.image(image,caption='loaded', use_column_width=True)
         img = Image.open(image).convert('L')
         img = img.resize((28, 28))
         img = np.array(img).astype('float32') / 255.0
@@ -95,7 +94,7 @@ if unique_selection2 == "Upload a file":
 elif unique_selection2 == "URL":
     url = col1.text_input("Type image URL")
     if url:
-        st.image(url, caption='Imagen cargada desde URL', use_column_width=True)
+        st.image(url, caption='Loaded image from URL', use_column_width=True)
         response = requests.get(url, verify=False)
         img = Image.open(BytesIO(response.content)).convert('L')
         img = img.resize((28, 28))
