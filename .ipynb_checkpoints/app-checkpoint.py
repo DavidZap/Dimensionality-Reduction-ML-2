@@ -56,7 +56,6 @@ file_path_y ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reductio
 
 y=load_data(file_path_y)
 X=load_data(file_path_X)
-X=X.drop(X.columns[0],axis=1) 
 
 
 def do_predict(img):
