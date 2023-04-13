@@ -54,10 +54,10 @@ def do_predict(img):
 
     with st.spinner('Wait for it...'):
 
-        X=pd.read_csv("XMatrix")
-        y=pd.read_csv("YMatrix")
-        X=X.drop(X.columns[0],axis=1)
-
+        # X=pd.read_csv("XMatrix")
+        # y=pd.read_csv("YMatrix")
+        X=pd.read_csv("https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix.csv"")
+        X=X.drop(X.columns[0],axis=1) 
 
         from model import myPCA
         myPCA = myPCA(n_components=n_components,method=method)
