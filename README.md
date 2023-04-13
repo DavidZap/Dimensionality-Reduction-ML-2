@@ -2,6 +2,9 @@
 
 #### Author: David Zapata Chaves
 
+Data App: https://dimensionality-reduction-mnist-davidzeta.streamlit.app/
+
+
 9. **What are the underlying mathematical principles behind UMAP? What is it useful for?**
 
 UMAP (Uniform Manifold Approximation and Projection) is a dimensionality reduction technique that is used to visualize and explore high-dimensional data. UMAP is based on a mathematical framework that involves concepts from topology, graph theory, and optimization.
