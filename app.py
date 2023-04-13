@@ -22,7 +22,7 @@ import time
 
 st.title("Number Classifier with my unsupervised package 🔢")
 st.write("                                     ")
-st.write("This data app could classify the number 0 and 8 from mnist dataset")
+st.info("This data app could classify the number 0 and 8 from mnist dataset", icon="ℹ️")
 
 col0, col1 = st.columns(2)
 # choose an unique option
@@ -36,7 +36,7 @@ method = options[unique_selection]
 st.write('You choose :', method)
 
 #write n_components:
-n_components=col1.slider("n_components", 0, 28, 10)
+n_components=col1.slider("n_components", 0, 784, 2)
 
 #Input data
 
