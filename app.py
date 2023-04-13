@@ -36,7 +36,7 @@ method = options[unique_selection]
 st.write('You choose :', method)
 
 #write n_components:
-n_components=col1.slider("n_components", 0, 784, 2)
+n_components=col1.slider("n_components", 1, 784, 2)
 
 #Input data
 
