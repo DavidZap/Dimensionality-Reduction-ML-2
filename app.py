@@ -51,8 +51,8 @@ def load_data(file_path):
     data = pd.read_csv(file_path)
     return data
 
-file_path_X ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix"
-file_path_y ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/Ymatrix"
+file_path_X ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/DataMnist/XMatrix"
+file_path_y ="https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/DataMnist/Ymatrix"
 
 y=load_data(file_path_y)
 X=load_data(file_path_X)
