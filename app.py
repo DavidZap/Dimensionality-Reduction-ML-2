@@ -56,7 +56,7 @@ def do_predict(img):
 
         # X=pd.read_csv("XMatrix")
         # y=pd.read_csv("YMatrix")
-        X=pd.read_csv("https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix.csv"")
+        X=pd.read_csv("https://raw.githubusercontent.com/DavidZap/Dimensionality-Reduction-ML-2/main/XMatrix.csv")
         X=X.drop(X.columns[0],axis=1) 
 
         from model import myPCA
