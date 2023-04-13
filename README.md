@@ -1,7 +1,6 @@
-## Lab1- DimRed
+# Lab1- DimRed
 
 #### Author: David Zapata Chaves
-
 
 9. **What are the underlying mathematical principles behind UMAP? What is it useful for?**
 
@@ -51,3 +50,20 @@ LDA is useful for a wide range of applications in data analysis and machine lear
 * Image and signal processing, where LDA can be used to classify images or signals into different classes based on their features.
 
 * Text classification, where LDA can be used to classify text documents into different categories based on the words and phrases they contain.
+
+## How use the streamlit App?
+
+
+* 1. Install [dependencies](requirements.txt)
+
+    ```
+    pip install -r requirements.txt
+    
+    ```
+
+
+* 2. Run demo [wep-app](app.py)
+    ```
+    streamlit run app.py
+    
+    ```

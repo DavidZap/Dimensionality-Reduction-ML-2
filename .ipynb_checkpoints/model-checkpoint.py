@@ -15,8 +15,9 @@ class myPCA:
         self.transform(X)
         
     def transform(self, X):
-        X = X - self.mean
         
+        X = X - self.mean
+
         if self.method == "svd":
             U, s, Vt = np.linalg.svd(X)
             if self.n_components is not None:
@@ -25,7 +26,7 @@ class myPCA:
                 Vt = Vt[:self.n_components, :]
             self.components = Vt[:self.n_components].T
             self.var_explained = s / np.sum(s)
-          
+
         elif self.method == "eigen":
             # Calculate the covariance matrix of X
             cov_X = np.cov(X, rowvar=False)
@@ -35,18 +36,21 @@ class myPCA:
             idx = np.argsort(eigvals)[::-1]
             eigvals = eigvals[idx]
             eigvecs = eigvecs[:, idx]
-            
+
             # the rate of variance of the components 
             self.var_explained = eigvals / np.sum(eigvals)
-            
+
             # store the first n_components eigenvectors as the principal components
             self.components = eigvecs[:, : self.n_components]
     
     def fit_transform(self, X):
         # center the data
-        X = X - self.mean
+        if len(X) >1:
+            X = X - self.mean
+        else:
+            X=(X-np.array(self.mean).reshape(1,-1))
 
-        # project the data onto the principal components
+        # project the data into the principal components
         X_transformed = np.dot(X, self.components)
 
         return X_transformed
@@ -60,4 +64,6 @@ class myPCA:
     
     def explained_variance_ratio(self):
         return self.var_explained
+
+    
  
