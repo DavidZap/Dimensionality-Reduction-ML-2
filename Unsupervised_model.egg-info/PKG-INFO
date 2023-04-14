@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: Unsupervised-model
+Version: 0.0.1
+Summary: A companion to study dimensionality reduction
+Home-page: https://github.com/DavidZap/Dimensionality-Reduction-ML-2
+Requires-Python: >=3.7
+Provides-Extra: dev

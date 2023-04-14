@@ -1,0 +1,82 @@
+Lab1-DimRed.ipynb
+README.md
+app.py
+client_secrets.json
+model.py
+modelo.pkl
+quickstart.py
+requirements.txt
+setup.py
+token.json
+tsne.py
+utils.py
+.ipynb_checkpoints/Lab1-DimRed-checkpoint.ipynb
+.ipynb_checkpoints/README-checkpoint.md
+.ipynb_checkpoints/Test1-checkpoint.ipynb
+.ipynb_checkpoints/Untitled-checkpoint.ipynb
+.ipynb_checkpoints/Untitled1-checkpoint.ipynb
+.ipynb_checkpoints/XMatrix-checkpoint
+.ipynb_checkpoints/app-checkpoint.py
+.ipynb_checkpoints/model-checkpoint.py
+.ipynb_checkpoints/quickstart-checkpoint.py
+.ipynb_checkpoints/requirements-checkpoint.txt
+.ipynb_checkpoints/tsne-checkpoint.py
+.ipynb_checkpoints/utils-checkpoint.py
+DataMnist/XMatrix
+DataMnist/Ymatrix
+TestNumberMnist/cero.png
+TestNumberMnist/ocho.png
+Unsupervised_model.egg-info/PKG-INFO
+Unsupervised_model.egg-info/SOURCES.txt
+Unsupervised_model.egg-info/dependency_links.txt
+Unsupervised_model.egg-info/requires.txt
+Unsupervised_model.egg-info/top_level.txt
+__pycache__/grafic.cpython-39.pyc
+__pycache__/model.cpython-39.pyc
+__pycache__/otro.cpython-39.pyc
+__pycache__/utils.cpython-39.pyc
+input_folder/AlejandroC.jpeg
+input_folder/Carolina Bareño.jpg
+input_folder/Daniel V.jpeg
+input_folder/Daniela Hernandez.jpeg
+input_folder/DanielaAguiarV.jpg
+input_folder/David Zapata.jpeg
+input_folder/DavidG.jpg
+input_folder/JD.jpg
+input_folder/Jose Alejandro Llano.jpeg
+input_folder/JoseAlcocer.jpg
+input_folder/JuanCh.png
+input_folder/JuanPabloM.png
+input_folder/Laura.jpeg
+input_folder/Lina Martinez.jpeg
+input_folder/ManuelaPiedrahita.jpeg
+input_folder/MariaMartinez.jpg
+input_folder/Robinson_Alvarez.jpeg
+input_folder/Santiago M.jpeg
+input_folder/SantiagoRG.jpeg
+input_folder/VanessaLopera.jpg
+input_folder/mauriciosierrav.png
+input_folder/walter.jpeg
+output_folder/AlejandroC.jpeg
+output_folder/Carolina Bareño.jpg
+output_folder/Daniel V.jpeg
+output_folder/Daniela Hernandez.jpeg
+output_folder/DanielaAguiarV.jpg
+output_folder/David Zapata.jpeg
+output_folder/DavidG.jpg
+output_folder/DavidZapata.jpg
+output_folder/JD.jpg
+output_folder/Jose Alejandro Llano.jpeg
+output_folder/JoseAlcocer.jpg
+output_folder/JuanCh.png
+output_folder/JuanPabloM.png
+output_folder/Laura.jpeg
+output_folder/Lina Martinez.jpeg
+output_folder/ManuelaPiedrahita.jpeg
+output_folder/MariaMartinez.jpg
+output_folder/Robinson_Alvarez.jpeg
+output_folder/Santiago M.jpeg
+output_folder/SantiagoRG.jpeg
+output_folder/VanessaLopera.jpg
+output_folder/mauriciosierrav.png
+output_folder/walter.jpeg
